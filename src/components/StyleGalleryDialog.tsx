@@ -110,9 +110,6 @@ export default function StyleGalleryDialog({
           </div>
 
           <div className="style-gallery__carousel-shell">
-            <p className="style-gallery__unit-note">
-              {unitSize === 'small' ? '實用 300–400 呎' : '寬敞空間靈感'}
-            </p>
             <div className="style-gallery__arrows" aria-label="切換空間">
               <button type="button" onClick={() => scrollRooms(-1)} aria-label="上一個空間">←</button>
               <button type="button" onClick={() => scrollRooms(1)} aria-label="下一個空間">→</button>
