@@ -75,7 +75,7 @@ export default function StyleGalleryDialog({
         className="style-gallery__panel"
         role="dialog"
         aria-modal="true"
-        aria-labelledby="style-gallery-title"
+        aria-label={`${style.name}空間設計`}
         onClick={(event) => event.stopPropagation()}
       >
         <button
@@ -86,16 +86,6 @@ export default function StyleGalleryDialog({
         >
           ×
         </button>
-
-        <div className="style-gallery__hero">
-          <img src={style.image} alt={`${style.name}風格參考`} />
-          <div className="style-gallery__hero-shade" aria-hidden="true" />
-          <div className="style-gallery__heading">
-            <p className="style-gallery__eyebrow">全屋風格靈感</p>
-            <h2 id="style-gallery-title">{style.name}</h2>
-            <p>{style.tagline}</p>
-          </div>
-        </div>
 
         <div className="style-gallery__body">
           <div className="style-gallery__unit-tabs" role="tablist" aria-label="選擇單位大小">

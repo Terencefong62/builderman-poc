@@ -33,9 +33,10 @@
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  color: var(--color-white);
-  background: color-mix(in srgb, var(--color-ink) 52%, transparent);
-  border: 1px solid color-mix(in srgb, var(--color-white) 35%, transparent);
+  color: var(--color-brand-dark);
+  background: color-mix(in srgb, var(--color-background-base) 92%, transparent);
+  border: 1px solid var(--color-border-default);
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--color-brand-dark) 12%, transparent);
   font-size: 28px;
   line-height: 1;
 }
@@ -104,8 +105,9 @@
   flex: 0 0 44px;
   display: flex;
   gap: 28px;
+  justify-content: center;
   align-items: stretch;
-  padding: 0;
+  padding: 0 60px;
   margin: 0;
   border-bottom: 1px solid var(--color-border-default);
   background: transparent;
@@ -354,7 +356,7 @@
   }
 
   .style-gallery__panel {
-    width: min(100%, 600px);
+    width: min(100%, 660px);
     height: auto;
     max-height: calc(100dvh - 24px);
     border-radius: 28px;
