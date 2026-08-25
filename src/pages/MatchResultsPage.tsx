@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import MatchHeader from '../components/MatchHeader'
 import { getTopMatchedCompanies, type MatchedCompany } from '../data/companies'
@@ -24,6 +24,17 @@ function CompanyCard({
   onBook: () => void
 }) {
   const isTop = company.rank === 1
+  const projectsRef = useRef<HTMLDivElement>(null)
+  const hasProjectSlider = (company.recentProjects?.length ?? 0) > 2
+
+  function scrollProjects(direction: -1 | 1) {
+    const projects = projectsRef.current
+    if (!projects) return
+    projects.scrollBy({
+      left: projects.clientWidth * 0.82 * direction,
+      behavior: 'smooth',
+    })
+  }
 
   return (
     <article
@@ -145,10 +156,25 @@ function CompanyCard({
       {company.recentProjects && company.recentProjects.length > 0 && (
         <section className="company-projects" aria-labelledby={`company-${company.id}-projects`}>
           <div className="company-projects__head">
-            <h3 id={`company-${company.id}-projects`}>近期工程</h3>
-            <p>公司最近完成嘅住宅項目</p>
+            <div>
+              <h3 id={`company-${company.id}-projects`}>近期工程</h3>
+              <p>公司最近完成嘅住宅項目</p>
+            </div>
+            {hasProjectSlider && (
+              <div className="company-projects__controls" aria-label="切換近期工程">
+                <button type="button" onClick={() => scrollProjects(-1)} aria-label="上一個工程">
+                  ←
+                </button>
+                <button type="button" onClick={() => scrollProjects(1)} aria-label="下一個工程">
+                  →
+                </button>
+              </div>
+            )}
           </div>
-          <div className="company-projects__list">
+          <div
+            ref={projectsRef}
+            className={`company-projects__list${hasProjectSlider ? ' has-slider' : ''}`}
+          >
             {company.recentProjects.map((project) => (
               <figure className="company-project" key={`${project.estateName}-${project.space}`}>
                 <img
