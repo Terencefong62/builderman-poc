@@ -151,7 +151,7 @@ export default function ContactPage() {
 
               <label className="field">
                 <span className="field__label">
-                  電郵（登入名稱） <span className="field__required">*</span>
+                  帳戶登入名稱 <span className="field__required">*</span>
                 </span>
                 <input
                   className={`field__input field__input--en${errors.email ? ' is-error' : ''}`}
@@ -168,7 +168,7 @@ export default function ContactPage() {
                 />
                 {!errors.email && (
                   <span id="email-login-hint" className="field__hint">
-                    日後使用此電郵登入帳戶
+                    請輸入電郵地址，日後使用此電郵登入帳戶
                   </span>
                 )}
                 {errors.email && (
@@ -204,6 +204,13 @@ export default function ContactPage() {
                   </span>
                 )}
               </label>
+
+              <div className="account-confirmation" role="note">
+                <span className="account-confirmation__icon" aria-hidden="true">✉</span>
+                <p>
+                  成功註冊後，系統會自動發送確認電郵，Click 入去確認就搞掂晒！
+                </p>
+              </div>
 
               <label className="field">
                 <span className="field__label">

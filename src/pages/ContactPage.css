@@ -169,6 +169,36 @@
   color: var(--color-text-secondary);
 }
 
+.account-confirmation {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 14px;
+  border: 1px solid color-mix(in srgb, var(--color-brand) 24%, var(--color-border-default));
+  border-radius: var(--radius-card);
+  background: color-mix(in srgb, var(--color-status) 52%, var(--color-white));
+  color: var(--color-brand-dark);
+}
+
+.account-confirmation__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  border-radius: 50%;
+  background: var(--color-brand-dark);
+  color: var(--color-white);
+  font-size: 17px;
+}
+
+.account-confirmation p {
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
 .contact-page__bar {
   position: fixed;
   left: 0;
