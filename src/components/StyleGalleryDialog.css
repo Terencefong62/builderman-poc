@@ -1,0 +1,214 @@
+.style-gallery {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0;
+  background: color-mix(in srgb, var(--color-ink) 52%, transparent);
+  backdrop-filter: blur(6px);
+}
+
+.style-gallery__panel {
+  position: relative;
+  width: 100%;
+  max-height: 92vh;
+  overflow-y: auto;
+  background: var(--color-background-warm);
+  border-radius: 28px 28px 0 0;
+  box-shadow: 0 -24px 60px color-mix(in srgb, var(--color-brand-dark) 24%, transparent);
+}
+
+.style-gallery__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  color: var(--color-white);
+  background: color-mix(in srgb, var(--color-ink) 52%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-white) 35%, transparent);
+  font-size: 28px;
+  line-height: 1;
+}
+
+.style-gallery__hero {
+  position: relative;
+  min-height: 310px;
+  overflow: hidden;
+}
+
+.style-gallery__hero img,
+.style-gallery__hero-shade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.style-gallery__hero img {
+  object-fit: cover;
+}
+
+.style-gallery__hero-shade {
+  background: linear-gradient(180deg, transparent 25%, color-mix(in srgb, var(--color-ink) 82%, transparent));
+}
+
+.style-gallery__heading {
+  position: absolute;
+  left: 24px;
+  right: 72px;
+  bottom: 24px;
+  z-index: 1;
+  color: var(--color-white);
+}
+
+.style-gallery__eyebrow,
+.style-gallery__space-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.style-gallery__heading h2 {
+  margin-top: 5px;
+  font-size: 36px;
+  line-height: 1.18;
+}
+
+.style-gallery__heading > p:last-child {
+  margin-top: 6px;
+  color: color-mix(in srgb, var(--color-white) 82%, transparent);
+}
+
+.style-gallery__body {
+  padding: 24px 20px calc(28px + env(safe-area-inset-bottom));
+}
+
+.style-gallery__intro {
+  margin-bottom: 20px;
+}
+
+.style-gallery__intro p {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-brand-dark);
+}
+
+.style-gallery__intro span {
+  display: block;
+  margin-top: 5px;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.style-gallery__spaces {
+  display: grid;
+  gap: 12px;
+}
+
+.style-gallery__space {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  gap: 14px;
+  padding: 18px;
+  background: var(--color-background-base);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-card);
+}
+
+.style-gallery__space-number {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-status);
+  color: var(--color-brand-dark);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.style-gallery__space-label {
+  color: var(--color-cta);
+}
+
+.style-gallery__space h3 {
+  margin: 3px 0 6px;
+  font-size: 19px;
+  color: var(--color-text-primary);
+}
+
+.style-gallery__space div > p:last-child {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.style-gallery__actions {
+  display: grid;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.style-gallery__primary,
+.style-gallery__secondary {
+  min-height: 50px;
+  border-radius: var(--radius-pill);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.style-gallery__primary {
+  color: var(--color-white);
+  background: var(--color-cta);
+}
+
+.style-gallery__secondary {
+  color: var(--color-brand-dark);
+  background: var(--color-background-base);
+  border: 1px solid var(--color-border-default);
+}
+
+@media (min-width: 768px) {
+  .style-gallery {
+    align-items: center;
+    padding: 28px;
+  }
+
+  .style-gallery__panel {
+    width: min(100%, 920px);
+    border-radius: 28px;
+  }
+
+  .style-gallery__hero {
+    min-height: 380px;
+  }
+
+  .style-gallery__heading {
+    left: 36px;
+    bottom: 32px;
+  }
+
+  .style-gallery__heading h2 {
+    font-size: 48px;
+  }
+
+  .style-gallery__body {
+    padding: 30px 32px 32px;
+  }
+
+  .style-gallery__spaces {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .style-gallery__actions {
+    grid-template-columns: 1fr 1fr;
+  }
+}

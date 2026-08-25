@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import MatchHeader from '../components/MatchHeader'
 import SelectedStyleTags from '../components/SelectedStyleTags'
 import StyleCard from '../components/StyleCard'
+import StyleGalleryDialog from '../components/StyleGalleryDialog'
 import StyleSwapDialog from '../components/StyleSwapDialog'
 import { MATCH_STEPS, RENOVATION_STYLES } from '../data/styles'
 import { loadMatchDraft, saveMatchDraft } from '../lib/matchDraft'
@@ -15,6 +16,7 @@ export default function StyleSelectPage() {
   const [selected, setSelected] = useState<string[]>(() => loadMatchDraft().styles)
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([])
   const [pendingStyleId, setPendingStyleId] = useState<string | null>(null)
+  const [exploringStyleId, setExploringStyleId] = useState<string | null>(null)
   const uploadInputRef = useRef<HTMLInputElement | null>(null)
 
   const selectedStyles = useMemo(
@@ -25,6 +27,11 @@ export default function StyleSelectPage() {
   const pendingStyle = useMemo(
     () => RENOVATION_STYLES.find((style) => style.id === pendingStyleId) ?? null,
     [pendingStyleId],
+  )
+
+  const exploringStyle = useMemo(
+    () => RENOVATION_STYLES.find((style) => style.id === exploringStyleId) ?? null,
+    [exploringStyleId],
   )
 
   const uploadedLabel = useMemo(() => {
@@ -115,6 +122,7 @@ export default function StyleSelectPage() {
               style={style}
               selected={selected.includes(style.id)}
               onToggle={toggleStyle}
+              onExplore={setExploringStyleId}
               index={index}
             />
           ))}
@@ -203,6 +211,18 @@ export default function StyleSelectPage() {
           currentStyles={selectedStyles}
           onConfirm={confirmSwap}
           onCancel={() => setPendingStyleId(null)}
+        />
+      )}
+
+      {exploringStyle && (
+        <StyleGalleryDialog
+          style={exploringStyle}
+          selected={selected.includes(exploringStyle.id)}
+          onToggle={() => {
+            toggleStyle(exploringStyle.id)
+            setExploringStyleId(null)
+          }}
+          onClose={() => setExploringStyleId(null)}
         />
       )}
     </div>
