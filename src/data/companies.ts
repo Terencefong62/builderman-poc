@@ -12,7 +12,17 @@ export type MatchedCompany = {
   newsHeadline?: string
   aiScore: number
   matchReason: string
+  contactPerson?: string
+  contactRole?: string
+  recentProjects?: Array<{
+    estateName: string
+    space: string
+    image: string
+  }>
 }
+
+const projectImage = (filename: string) =>
+  `${import.meta.env.BASE_URL}styles/${filename}`
 
 export const TOP_MATCH_COUNT = 3
 export const MORE_MATCH_COUNT = 5
@@ -30,6 +40,20 @@ export const MOCK_MATCHED_COMPANIES: MatchedCompany[] = [
     hasOwnFurnitureFactory: true,
     hasNegativeNews: false,
     aiScore: 9.2,
+    contactPerson: '陳先生',
+    contactRole: '高級項目顧問',
+    recentProjects: [
+      {
+        estateName: '太古城・星輝台',
+        space: '客廳及飯廳',
+        image: projectImage('modern-minimal-v2.png'),
+      },
+      {
+        estateName: '將軍澳・天晉',
+        space: '開放式廚房',
+        image: projectImage('scandinavian.jpg'),
+      },
+    ],
     matchReason:
       '比第2、3名風格更貼近你；同類型單位完工更穩定，AI評分亦明顯較高',
   },
@@ -46,6 +70,20 @@ export const MOCK_MATCHED_COMPANIES: MatchedCompany[] = [
     newsHeadline: '客戶投訴工程延誤兩個月',
     newsSourceUrl: 'https://example.com/news/harbour-home-delay',
     aiScore: 8.4,
+    contactPerson: '林小姐',
+    contactRole: '室內設計顧問',
+    recentProjects: [
+      {
+        estateName: '黃埔花園',
+        space: '客飯廳',
+        image: projectImage('contemporary.jpg'),
+      },
+      {
+        estateName: '啟德・MONACO',
+        space: '主人房',
+        image: projectImage('wabisabi.jpg'),
+      },
+    ],
     matchReason:
       '比第3名住宅案例更豐富，預算同地區匹配度更高，整體更穩陣',
   },
@@ -60,6 +98,20 @@ export const MOCK_MATCHED_COMPANIES: MatchedCompany[] = [
     hasOwnFurnitureFactory: true,
     hasNegativeNews: false,
     aiScore: 8.1,
+    contactPerson: '周先生',
+    contactRole: '項目經理',
+    recentProjects: [
+      {
+        estateName: '沙田第一城',
+        space: '客廳',
+        image: projectImage('japanese.jpg'),
+      },
+      {
+        estateName: '荃灣・海之戀',
+        space: '廚房及收納',
+        image: projectImage('cream.jpg'),
+      },
+    ],
     matchReason:
       '工期預測較短、未見負面新聞，係前三名入面較穩陣安全嘅選擇之一',
   },

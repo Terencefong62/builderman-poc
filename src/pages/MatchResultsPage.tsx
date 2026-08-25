@@ -41,6 +41,18 @@ function CompanyCard({
           <h2 id={`company-${company.id}-name`} className="company-card__name">
             {company.name}
           </h2>
+          {company.contactPerson && (
+            <p className="company-card__contact">
+              <span className="company-card__contact-avatar" aria-hidden="true">
+                {company.contactPerson.slice(0, 1)}
+              </span>
+              <span>
+                <span className="company-card__contact-label">公司聯絡人</span>
+                <strong>{company.contactPerson}</strong>
+                {company.contactRole && <span> · {company.contactRole}</span>}
+              </span>
+            </p>
+          )}
         </div>
 
         <div
@@ -127,6 +139,30 @@ function CompanyCard({
           <p className="company-why__text">{company.matchReason}</p>
         </aside>
       </div>
+
+      {company.recentProjects && company.recentProjects.length > 0 && (
+        <section className="company-projects" aria-labelledby={`company-${company.id}-projects`}>
+          <div className="company-projects__head">
+            <h3 id={`company-${company.id}-projects`}>近期工程</h3>
+            <p>公司最近完成嘅住宅項目</p>
+          </div>
+          <div className="company-projects__list">
+            {company.recentProjects.map((project) => (
+              <figure className="company-project" key={`${project.estateName}-${project.space}`}>
+                <img
+                  src={project.image}
+                  alt={`${company.name}於${project.estateName}完成的${project.space}裝修工程`}
+                  loading="lazy"
+                />
+                <figcaption>
+                  <strong>{project.estateName}</strong>
+                  <span>{project.space}</span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      )}
 
       <button
         type="button"
