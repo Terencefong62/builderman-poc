@@ -19,10 +19,10 @@
 }
 
 .match-header.is-scrolled:not(.is-hidden) {
-  background: color-mix(in srgb, var(--color-background-warm) 54%, transparent);
-  backdrop-filter: blur(18px) saturate(140%);
-  border-bottom-color: color-mix(in srgb, var(--color-white) 28%, transparent);
-  box-shadow: 0 10px 30px color-mix(in srgb, var(--color-brand-dark) 7%, transparent);
+  background: color-mix(in srgb, var(--color-background-warm) 24%, transparent);
+  backdrop-filter: blur(14px) saturate(125%);
+  border-bottom-color: color-mix(in srgb, var(--color-white) 16%, transparent);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--color-brand-dark) 4%, transparent);
 }
 
 .match-header__inner {
