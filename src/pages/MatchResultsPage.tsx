@@ -38,21 +38,23 @@ function CompanyCard({
             </span>
             {isTop && <span className="company-card__badge">最推薦</span>}
           </div>
-          <h2 id={`company-${company.id}-name`} className="company-card__name">
-            {company.name}
-          </h2>
-          {company.contactPerson && (
-            <p className="company-card__contact">
-              <span className="company-card__contact-avatar" aria-hidden="true">
-                {company.contactPerson.slice(0, 1)}
-              </span>
-              <span>
-                <span className="company-card__contact-label">公司聯絡人</span>
-                <strong>{company.contactPerson}</strong>
-                {company.contactRole && <span> · {company.contactRole}</span>}
-              </span>
-            </p>
-          )}
+          <div className="company-card__name-row">
+            <h2 id={`company-${company.id}-name`} className="company-card__name">
+              {company.name}
+            </h2>
+            {company.contactPerson && (
+              <p className="company-card__contact">
+                <span className="company-card__contact-avatar" aria-hidden="true">
+                  {company.contactPerson.slice(0, 1)}
+                </span>
+                <span>
+                  <span className="company-card__contact-label">公司聯絡人</span>
+                  <strong>{company.contactPerson}</strong>
+                  {company.contactRole && <span> · {company.contactRole}</span>}
+                </span>
+              </p>
+            )}
+          </div>
         </div>
 
         <div
