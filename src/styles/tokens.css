@@ -1,0 +1,37 @@
+:root {
+  /* Brand colours */
+  --color-builder-green: #176b5b;
+  --color-workshop-green: #0e453b;
+  --color-warm-coral: #f26f4d;
+  --color-mint-wash: #ddf1e9;
+  --color-home-sand: #f6f0e7;
+  --color-ink: #1f2a2a;
+  --color-stone: #5c6865;
+  --color-mist: #e5e9e6;
+  --color-white: #ffffff;
+
+  /* Semantic tokens */
+  --color-background-warm: var(--color-home-sand);
+  --color-background-base: var(--color-white);
+  --color-text-primary: var(--color-ink);
+  --color-text-secondary: var(--color-stone);
+  --color-border-default: var(--color-mist);
+  --color-brand: var(--color-builder-green);
+  --color-brand-dark: var(--color-workshop-green);
+  --color-cta: var(--color-warm-coral);
+  --color-status: var(--color-mint-wash);
+
+  /* Radius */
+  --radius-card: 16px;
+  --radius-feature: 24px;
+  --radius-pill: 999px;
+
+  /* Typography */
+  --font-zh: 'Noto Sans HK', 'Noto Sans TC', sans-serif;
+  --font-en: 'Manrope', sans-serif;
+
+  /* Layout */
+  --header-height: 64px;
+  --bottom-bar-height: 88px;
+  --page-max: 1240px;
+}
