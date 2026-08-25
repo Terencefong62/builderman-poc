@@ -13,22 +13,18 @@ const SPACE_IDEAS = [
   {
     name: '客廳',
     label: 'Living room',
-    copy: '由主牆、燈光到傢俬比例，保持整體線條一致，營造舒服又開揚嘅日常空間。',
   },
   {
     name: '廚房',
     label: 'Kitchen',
-    copy: '用同一套色調同物料延伸至廚櫃、工作枱及收納，兼顧美感同實用性。',
   },
   {
     name: '睡房',
     label: 'Bedroom',
-    copy: '以柔和燈光、布藝同簡潔收納延續風格，令私人空間更安靜、耐看。',
   },
   {
-    name: '浴室及其他空間',
-    label: 'Bathroom & more',
-    copy: '將特色材質、五金同色彩帶入浴室、玄關及走廊，令全屋設計真正連貫。',
+    name: '浴室',
+    label: 'Bathroom',
   },
 ]
 
@@ -76,23 +72,25 @@ export default function StyleGalleryDialog({
         </div>
 
         <div className="style-gallery__body">
-          <div className="style-gallery__intro">
-            <p>將你鍾意嘅風格延伸到屋企每一個空間。</p>
-            <span>以下係設計師配搭時會留意嘅重點：</span>
-          </div>
-
           <div className="style-gallery__spaces">
             {SPACE_IDEAS.map((space, index) => (
-              <article className="style-gallery__space" key={space.name}>
-                <span className="style-gallery__space-number en">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-                <div>
-                  <p className="style-gallery__space-label en">{space.label}</p>
-                  <h3>{space.name}</h3>
-                  <p>{space.copy}</p>
-                </div>
-              </article>
+              <figure className="style-gallery__space" key={space.name}>
+                <div
+                  className={`style-gallery__space-image style-gallery__space-image--${index + 1}`}
+                  style={{ backgroundImage: `url(${style.galleryImage})` }}
+                  role="img"
+                  aria-label={`${style.name}${space.name}設計`}
+                />
+                <figcaption>
+                  <span className="style-gallery__space-number en">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <span>
+                    <span className="style-gallery__space-label en">{space.label}</span>
+                    <strong>{space.name}</strong>
+                  </span>
+                </figcaption>
+              </figure>
             ))}
           </div>
 
