@@ -33,7 +33,7 @@ export const RENOVATION_STYLES: RenovationStyle[] = [
     tagline: '明亮、溫暖木調',
     image: styleImage('scandinavian.jpg'),
     galleryImage: styleGallery('scandinavian.png'),
-    smallGalleryImage: smallStyleGallery('scandinavian.png'),
+    smallGalleryImage: smallStyleGallery('scandinavian-v2.png'),
     layout: 'portrait',
   },
   {
