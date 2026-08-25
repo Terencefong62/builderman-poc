@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { RenovationStyle } from '../data/styles'
 import './StyleGalleryDialog.css'
 
@@ -34,6 +34,22 @@ export default function StyleGalleryDialog({
   onToggle,
   onClose,
 }: StyleGalleryDialogProps) {
+  const [unitSize, setUnitSize] = useState<'small' | 'large'>('small')
+  const carouselRef = useRef<HTMLDivElement>(null)
+
+  const galleryImage = unitSize === 'small' ? style.smallGalleryImage : style.galleryImage
+
+  const selectUnitSize = (size: 'small' | 'large') => {
+    setUnitSize(size)
+    requestAnimationFrame(() => carouselRef.current?.scrollTo({ left: 0, behavior: 'smooth' }))
+  }
+
+  const scrollRooms = (direction: -1 | 1) => {
+    const carousel = carouselRef.current
+    if (!carousel) return
+    carousel.scrollBy({ left: carousel.clientWidth * 0.86 * direction, behavior: 'smooth' })
+  }
+
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') onClose()
@@ -72,12 +88,52 @@ export default function StyleGalleryDialog({
         </div>
 
         <div className="style-gallery__body">
-          <div className="style-gallery__spaces">
+          <div className="style-gallery__unit-tabs" role="tablist" aria-label="選擇單位大小">
+            <button
+              type="button"
+              role="tab"
+              aria-selected={unitSize === 'small'}
+              className={unitSize === 'small' ? 'is-active' : ''}
+              onClick={() => selectUnitSize('small')}
+            >
+              <strong>小單位</strong>
+              <span>實用 300–400 呎</span>
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected={unitSize === 'large'}
+              className={unitSize === 'large' ? 'is-active' : ''}
+              onClick={() => selectUnitSize('large')}
+            >
+              <strong>大單位</strong>
+              <span>寬敞空間靈感</span>
+            </button>
+          </div>
+
+          <div className="style-gallery__section-heading">
+            <div>
+              <p className="style-gallery__eyebrow">
+                {unitSize === 'small' ? '300–400 SQ FT' : 'SPACIOUS HOME'}
+              </p>
+              <h3>{unitSize === 'small' ? '小單位設計' : '大單位設計'}</h3>
+            </div>
+            <div className="style-gallery__arrows" aria-label="切換空間">
+              <button type="button" onClick={() => scrollRooms(-1)} aria-label="上一個空間">←</button>
+              <button type="button" onClick={() => scrollRooms(1)} aria-label="下一個空間">→</button>
+            </div>
+          </div>
+
+          <div
+            className="style-gallery__spaces"
+            ref={carouselRef}
+            aria-label={`${unitSize === 'small' ? '小單位' : '大單位'}空間設計，可左右滑動`}
+          >
             {SPACE_IDEAS.map((space, index) => (
               <figure className="style-gallery__space" key={space.name}>
                 <div
                   className={`style-gallery__space-image style-gallery__space-image--${index + 1}`}
-                  style={{ backgroundImage: `url(${style.galleryImage})` }}
+                  style={{ backgroundImage: `url(${galleryImage})` }}
                   role="img"
                   aria-label={`${style.name}${space.name}設計`}
                 />

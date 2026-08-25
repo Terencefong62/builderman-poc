@@ -4,6 +4,7 @@ export type RenovationStyle = {
   tagline: string
   image: string
   galleryImage: string
+  smallGalleryImage: string
   layout: 'portrait' | 'square' | 'wide' | 'feature'
 }
 
@@ -13,6 +14,9 @@ const styleImage = (filename: string) =>
 const styleGallery = (filename: string) =>
   `${import.meta.env.BASE_URL}style-spaces/${filename}`
 
+const smallStyleGallery = (filename: string) =>
+  `${import.meta.env.BASE_URL}style-spaces-small/${filename}`
+
 export const RENOVATION_STYLES: RenovationStyle[] = [
   {
     id: 'modern-minimal',
@@ -20,6 +24,7 @@ export const RENOVATION_STYLES: RenovationStyle[] = [
     tagline: '留白、乾淨線條',
     image: styleImage('modern-minimal-v2.png'),
     galleryImage: styleGallery('modern-minimal.png'),
+    smallGalleryImage: smallStyleGallery('modern-minimal.png'),
     layout: 'feature',
   },
   {
@@ -28,6 +33,7 @@ export const RENOVATION_STYLES: RenovationStyle[] = [
     tagline: '明亮、溫暖木調',
     image: styleImage('scandinavian.jpg'),
     galleryImage: styleGallery('scandinavian.png'),
+    smallGalleryImage: smallStyleGallery('scandinavian.png'),
     layout: 'portrait',
   },
   {
@@ -36,6 +42,7 @@ export const RENOVATION_STYLES: RenovationStyle[] = [
     tagline: '靜謐、自然材質',
     image: styleImage('japanese.jpg'),
     galleryImage: styleGallery('japanese.png'),
+    smallGalleryImage: smallStyleGallery('japanese.png'),
     layout: 'square',
   },
   {
@@ -44,6 +51,7 @@ export const RENOVATION_STYLES: RenovationStyle[] = [
     tagline: '俐落、當代感',
     image: styleImage('contemporary.jpg'),
     galleryImage: styleGallery('contemporary.png'),
+    smallGalleryImage: smallStyleGallery('contemporary.png'),
     layout: 'wide',
   },
   {
@@ -52,6 +60,7 @@ export const RENOVATION_STYLES: RenovationStyle[] = [
     tagline: '質感、不完美之美',
     image: styleImage('wabisabi.jpg'),
     galleryImage: styleGallery('wabisabi.png'),
+    smallGalleryImage: smallStyleGallery('wabisabi.png'),
     layout: 'portrait',
   },
   {
@@ -60,6 +69,7 @@ export const RENOVATION_STYLES: RenovationStyle[] = [
     tagline: '粗獷、金屬質感',
     image: styleImage('industrial.jpg'),
     galleryImage: styleGallery('industrial.png'),
+    smallGalleryImage: smallStyleGallery('industrial.png'),
     layout: 'portrait',
   },
   {
@@ -68,6 +78,7 @@ export const RENOVATION_STYLES: RenovationStyle[] = [
     tagline: '自由、個性層次',
     image: styleImage('eclectic.jpg'),
     galleryImage: styleGallery('eclectic.png'),
+    smallGalleryImage: smallStyleGallery('eclectic.png'),
     layout: 'square',
   },
   {
@@ -76,6 +87,7 @@ export const RENOVATION_STYLES: RenovationStyle[] = [
     tagline: '優雅、柔美線條',
     image: styleImage('french.jpg'),
     galleryImage: styleGallery('french.png'),
+    smallGalleryImage: smallStyleGallery('french.png'),
     layout: 'feature',
   },
   {
@@ -84,6 +96,7 @@ export const RENOVATION_STYLES: RenovationStyle[] = [
     tagline: '復古、經典比例',
     image: styleImage('midcentury.jpg'),
     galleryImage: styleGallery('midcentury.png'),
+    smallGalleryImage: smallStyleGallery('midcentury.png'),
     layout: 'wide',
   },
   {
@@ -92,6 +105,7 @@ export const RENOVATION_STYLES: RenovationStyle[] = [
     tagline: '柔和、溫潤米色',
     image: styleImage('cream.jpg'),
     galleryImage: styleGallery('cream.png'),
+    smallGalleryImage: smallStyleGallery('cream.png'),
     layout: 'portrait',
   },
   {
@@ -100,6 +114,7 @@ export const RENOVATION_STYLES: RenovationStyle[] = [
     tagline: '經典、沉穩氣質',
     image: styleImage('british.jpg'),
     galleryImage: styleGallery('british.png'),
+    smallGalleryImage: smallStyleGallery('british.png'),
     layout: 'square',
   },
   {
@@ -108,6 +123,7 @@ export const RENOVATION_STYLES: RenovationStyle[] = [
     tagline: '藤編、熱帶質感',
     image: styleImage('southeast-asian.jpg'),
     galleryImage: styleGallery('southeast-asian.png'),
+    smallGalleryImage: smallStyleGallery('southeast-asian.png'),
     layout: 'portrait',
   },
 ]

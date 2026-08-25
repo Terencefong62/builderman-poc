@@ -91,17 +91,99 @@
   padding: 24px 20px calc(28px + env(safe-area-inset-bottom));
 }
 
-.style-gallery__spaces {
+.style-gallery__unit-tabs {
   display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 5px;
+  margin-bottom: 24px;
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--color-brand-dark) 7%, transparent);
+}
+
+.style-gallery__unit-tabs button {
+  display: grid;
+  gap: 2px;
+  min-height: 64px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  color: var(--color-text-secondary);
+  text-align: left;
+}
+
+.style-gallery__unit-tabs button.is-active {
+  color: var(--color-brand-dark);
+  background: var(--color-background-base);
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--color-brand-dark) 10%, transparent);
+}
+
+.style-gallery__unit-tabs strong {
+  font-size: 16px;
+}
+
+.style-gallery__unit-tabs span {
+  font-size: 12px;
+}
+
+.style-gallery__section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.style-gallery__section-heading h3 {
+  margin-top: 3px;
+  color: var(--color-text-primary);
+  font-size: 24px;
+}
+
+.style-gallery__section-heading .style-gallery__eyebrow {
+  color: var(--color-cta);
+}
+
+.style-gallery__arrows {
+  display: flex;
+  gap: 8px;
+}
+
+.style-gallery__arrows button {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--color-border-default);
+  border-radius: 50%;
+  color: var(--color-brand-dark);
+  background: var(--color-background-base);
+  font-size: 19px;
+}
+
+.style-gallery__spaces {
+  display: flex;
   gap: 12px;
+  overflow-x: auto;
+  padding: 2px 10% 10px 0;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-inline: contain;
+}
+
+.style-gallery__spaces::-webkit-scrollbar {
+  display: none;
 }
 
 .style-gallery__space {
   position: relative;
+  flex: 0 0 88%;
   overflow: hidden;
   background: var(--color-background-base);
   border: 1px solid var(--color-border-default);
   border-radius: var(--radius-card);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .style-gallery__space-image {
@@ -210,8 +292,16 @@
     padding: 30px 32px 32px;
   }
 
+  .style-gallery__unit-tabs {
+    width: min(100%, 520px);
+  }
+
   .style-gallery__spaces {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding-right: 14%;
+  }
+
+  .style-gallery__space {
+    flex-basis: calc(50% - 6px);
   }
 
   .style-gallery__actions {
