@@ -333,7 +333,6 @@ export default function UnitDetailsPage() {
                   type="number"
                   min="1"
                   inputMode="numeric"
-                  placeholder="450"
                   value={unit.areaSqft}
                   onChange={(event) => patch({ areaSqft: event.target.value })}
                 />
