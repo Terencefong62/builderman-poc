@@ -11,8 +11,20 @@ import './StyleSelectPage.css'
 
 const MAX_STYLES = 3
 
+function shuffleStyles() {
+  const styles = [...RENOVATION_STYLES]
+
+  for (let index = styles.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(Math.random() * (index + 1))
+    ;[styles[index], styles[swapIndex]] = [styles[swapIndex], styles[index]]
+  }
+
+  return styles
+}
+
 export default function StyleSelectPage() {
   const navigate = useNavigate()
+  const [displayStyles] = useState(shuffleStyles)
   const [selected, setSelected] = useState<string[]>(() => loadMatchDraft().styles)
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([])
   const [pendingStyleId, setPendingStyleId] = useState<string | null>(null)
@@ -116,7 +128,7 @@ export default function StyleSelectPage() {
           className="style-page__grid"
           aria-label="裝修風格選項"
         >
-          {RENOVATION_STYLES.map((style, index) => (
+          {displayStyles.map((style, index) => (
             <StyleCard
               key={style.id}
               style={style}

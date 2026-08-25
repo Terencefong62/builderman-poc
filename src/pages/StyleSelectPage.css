@@ -59,6 +59,23 @@
   margin-bottom: 18px;
 }
 
+@media (max-width: 767px) {
+  .style-page__grid > .style-card:nth-child(3n + 1) {
+    aspect-ratio: 4 / 3;
+    min-height: 260px;
+  }
+
+  .style-page__grid > .style-card:nth-child(3n + 2) {
+    aspect-ratio: 1 / 1;
+    min-height: 300px;
+  }
+
+  .style-page__grid > .style-card:nth-child(3n) {
+    aspect-ratio: 5 / 6;
+    min-height: 360px;
+  }
+}
+
 .style-page__upload {
   display: grid;
   gap: 16px;
@@ -229,6 +246,11 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 16px;
     margin-bottom: 24px;
+  }
+
+  .style-page__grid > .style-card:nth-child(5n + 1) {
+    grid-column: 1 / -1;
+    aspect-ratio: 16 / 9;
   }
 
   .style-page__upload {
