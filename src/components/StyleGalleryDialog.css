@@ -25,8 +25,8 @@
 
 .style-gallery__close {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 8px;
+  right: 8px;
   z-index: 3;
   display: grid;
   place-items: center;
@@ -42,8 +42,8 @@
 
 .style-gallery__hero {
   position: relative;
-  flex: 0 0 88px;
-  min-height: 88px;
+  flex: 0 0 72px;
+  min-height: 72px;
   overflow: hidden;
 }
 
@@ -67,7 +67,7 @@
   position: absolute;
   left: 24px;
   right: 72px;
-  bottom: 16px;
+  bottom: 8px;
   z-index: 1;
   color: var(--color-white);
 }
@@ -82,7 +82,7 @@
 
 .style-gallery__heading h2 {
   margin-top: 2px;
-  font-size: 26px;
+  font-size: 22px;
   line-height: 1.18;
 }
 
@@ -97,11 +97,11 @@
   min-height: 0;
   display: flex;
   flex-direction: column;
-  padding: 0 16px calc(14px + env(safe-area-inset-bottom));
+  padding: 0 16px calc(8px + env(safe-area-inset-bottom));
 }
 
 .style-gallery__unit-tabs {
-  flex: 0 0 48px;
+  flex: 0 0 44px;
   display: flex;
   gap: 28px;
   align-items: stretch;
@@ -114,7 +114,7 @@
 .style-gallery__unit-tabs button {
   position: relative;
   display: block;
-  min-height: 48px;
+  min-height: 44px;
   padding: 0 2px;
   border-radius: 0;
   color: var(--color-text-secondary);
@@ -146,9 +146,9 @@
   position: relative;
   flex: 0 0 auto;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 1;
   min-height: 0;
-  margin-top: 12px;
+  margin-top: 8px;
   overflow: hidden;
   border-radius: 22px;
   background: var(--color-ink);
@@ -301,7 +301,7 @@
   flex: 0 0 auto;
   display: grid;
   gap: 10px;
-  margin-top: 12px;
+  margin-top: 8px;
 }
 
 .style-gallery__dots {
@@ -330,7 +330,7 @@
 
 .style-gallery__primary,
 .style-gallery__secondary {
-  min-height: 50px;
+  min-height: 48px;
   border-radius: var(--radius-pill);
   font-size: 15px;
   font-weight: 700;
@@ -350,32 +350,32 @@
 @media (min-width: 768px) {
   .style-gallery {
     align-items: center;
-    padding: 28px;
+    padding: 12px;
   }
 
   .style-gallery__panel {
-    width: min(100%, 940px);
+    width: min(100%, 600px);
     height: auto;
-    max-height: 92vh;
+    max-height: calc(100dvh - 24px);
     border-radius: 28px;
   }
 
   .style-gallery__hero {
-    flex-basis: 88px;
-    min-height: 88px;
+    flex-basis: 72px;
+    min-height: 72px;
   }
 
   .style-gallery__heading {
     left: 24px;
-    bottom: 16px;
+    bottom: 8px;
   }
 
   .style-gallery__heading h2 {
-    font-size: 28px;
+    font-size: 22px;
   }
 
   .style-gallery__body {
-    padding: 0 24px 20px;
+    padding: 0 16px 8px;
   }
 
   .style-gallery__unit-tabs {
