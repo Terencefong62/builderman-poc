@@ -51,15 +51,26 @@ export default function StyleCard({
         aria-pressed={selected}
         aria-label={selected ? `取消選擇${style.name}` : `選擇${style.name}`}
       >
-        <svg viewBox="0 0 24 24" fill="none" width="24" height="24">
-          <path
-            d="M5 12.5L10 17.5L19 7.5"
-            stroke="currentColor"
-            strokeWidth="2.4"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        {selected ? (
+          <svg viewBox="0 0 24 24" fill="none" width="24" height="24" aria-hidden="true">
+            <path
+              d="M5 12.5L10 17.5L19 7.5"
+              stroke="currentColor"
+              strokeWidth="2.4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        ) : (
+          <svg viewBox="0 0 24 24" fill="none" width="24" height="24" aria-hidden="true">
+            <path
+              d="M12 5V19M5 12H19"
+              stroke="currentColor"
+              strokeWidth="2.4"
+              strokeLinecap="round"
+            />
+          </svg>
+        )}
       </button>
     </article>
   )
