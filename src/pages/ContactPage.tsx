@@ -48,7 +48,7 @@ export default function ContactPage() {
   const canContinue = isContactComplete(contact)
 
   const summary = useMemo(() => {
-    if (!canContinue) return '尚未填寫聯絡資料'
+    if (!canContinue) return '尚未完成個人檔案'
     return `${contact.name.trim()} · ${contact.phone.trim()}`
   }, [canContinue, contact])
 
@@ -78,8 +78,26 @@ export default function ContactPage() {
 
       <main className="contact-page__main">
         <section className="contact-page__intro">
-          <p className="contact-page__eyebrow">步驟3 填寫聯絡資料</p>
-          <h1 className="contact-page__title">留低聯絡方式，方便跟進配對</h1>
+          <p className="contact-page__eyebrow">步驟3 完成個人檔案</p>
+          <h1 className="contact-page__title">一次填好，之後跟進裝修更輕鬆</h1>
+          <p className="contact-page__lead">
+            填寫以下資料後，我哋會自動為你建立帳戶，方便你隨時登入繼續。
+          </p>
+
+          <ul className="contact-benefits" aria-label="完成個人檔案的好處">
+            <li>
+              <span className="contact-benefits__number" aria-hidden="true">01</span>
+              <span>方便平台同裝修公司聯絡你</span>
+            </li>
+            <li>
+              <span className="contact-benefits__number" aria-hidden="true">02</span>
+              <span>儲存你已填寫嘅資料，下次登入就可以繼續，唔使重新填過</span>
+            </li>
+            <li>
+              <span className="contact-benefits__number" aria-hidden="true">03</span>
+              <span>幫你儲存及管理報價同繳費紀錄</span>
+            </li>
+          </ul>
         </section>
 
         <form
@@ -93,7 +111,7 @@ export default function ContactPage() {
           <section className="contact-card" aria-labelledby="contact-heading">
             <div className="contact-card__head">
               <h2 id="contact-heading" className="contact-card__title">
-                聯絡資料
+                完成你嘅個人檔案
               </h2>
               <p className="contact-card__hint">所有欄位均為必填</p>
             </div>
@@ -192,7 +210,7 @@ export default function ContactPage() {
               disabled={!canContinue}
               onClick={handleContinue}
             >
-              下一步
+              建立帳戶並繼續
               <span aria-hidden="true"> →</span>
             </button>
           </div>

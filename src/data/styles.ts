@@ -131,6 +131,6 @@ export const RENOVATION_STYLES: RenovationStyle[] = [
 export const MATCH_STEPS = [
   { id: 'styles', label: '風格喜好' },
   { id: 'unit', label: '單位資料' },
-  { id: 'contact', label: '聯絡資料' },
+  { id: 'contact', label: '個人檔案' },
   { id: 'results', label: '智能配對' },
 ] as const

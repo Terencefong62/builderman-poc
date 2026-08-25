@@ -29,6 +29,50 @@
   margin-bottom: 10px;
 }
 
+.contact-page__lead {
+  max-width: 560px;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+}
+
+.contact-benefits {
+  display: grid;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.contact-benefits li {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  align-items: center;
+  gap: 12px;
+  min-height: 58px;
+  padding: 10px 14px 10px 10px;
+  border: 1px solid color-mix(in srgb, var(--color-brand) 16%, var(--color-border-default));
+  border-radius: var(--radius-card);
+  background: color-mix(in srgb, var(--color-brand) 5%, var(--color-background-base));
+  color: var(--color-text-primary);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.contact-benefits__number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-brand-dark);
+  color: var(--color-white);
+  font-family: var(--font-en);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
 .contact-form {
   display: grid;
   gap: 16px;
@@ -209,7 +253,7 @@
   }
 
   .contact-page__title {
-    font-size: 48px;
+    font-size: 44px;
     line-height: 1.18;
   }
 
