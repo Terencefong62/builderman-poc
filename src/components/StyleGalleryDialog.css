@@ -13,7 +13,7 @@
 .style-gallery__panel {
   position: relative;
   width: 100%;
-  height: 100dvh;
+  height: auto;
   max-height: 100dvh;
   overflow: hidden;
   display: flex;
@@ -42,8 +42,8 @@
 
 .style-gallery__hero {
   position: relative;
-  flex: 0 0 112px;
-  min-height: 112px;
+  flex: 0 0 88px;
+  min-height: 88px;
   overflow: hidden;
 }
 
@@ -144,7 +144,9 @@
 
 .style-gallery__carousel-shell {
   position: relative;
-  flex: 1;
+  flex: 0 0 auto;
+  width: 100%;
+  aspect-ratio: 16 / 9;
   min-height: 0;
   margin-top: 12px;
   overflow: hidden;
@@ -243,7 +245,7 @@
   left: 0;
   width: 200%;
   max-width: none;
-  height: 200%;
+  height: auto;
 }
 
 .style-gallery__space-image--2 img {
@@ -352,15 +354,15 @@
   }
 
   .style-gallery__panel {
-    width: min(100%, 1080px);
-    height: min(92vh, 760px);
-    max-height: min(92vh, 760px);
+    width: min(100%, 940px);
+    height: auto;
+    max-height: 92vh;
     border-radius: 28px;
   }
 
   .style-gallery__hero {
-    flex-basis: 112px;
-    min-height: 112px;
+    flex-basis: 88px;
+    min-height: 88px;
   }
 
   .style-gallery__heading {
