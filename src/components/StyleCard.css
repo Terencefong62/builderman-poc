@@ -105,20 +105,21 @@
 
 .style-card__check {
   position: absolute;
-  top: 14px;
-  right: 14px;
+  top: 12px;
+  right: 12px;
   z-index: 2;
-  width: 36px;
-  height: 36px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  color: var(--color-white);
-  background: color-mix(in srgb, var(--color-ink) 35%, transparent);
-  border: 1.5px solid color-mix(in srgb, var(--color-white) 55%, transparent);
-  backdrop-filter: blur(6px);
-  opacity: 0.85;
-  transform: scale(0.92);
+  color: var(--color-brand-dark);
+  background: color-mix(in srgb, var(--color-white) 92%, transparent);
+  border: 2px solid var(--color-white);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--color-ink) 26%, transparent);
+  opacity: 1;
+  transform: scale(1);
   cursor: pointer;
   transition:
     background 0.2s ease,
@@ -128,8 +129,7 @@
 }
 
 .style-card__check:hover {
-  opacity: 1;
-  transform: scale(1);
+  transform: scale(1.06);
 }
 
 .style-card__check:focus-visible,
@@ -139,10 +139,14 @@
 }
 
 .style-card.is-selected .style-card__check {
+  color: var(--color-white);
   background: var(--color-cta);
-  border-color: var(--color-cta);
+  border-color: var(--color-white);
   opacity: 1;
   transform: scale(1);
+  box-shadow:
+    0 0 0 3px var(--color-cta),
+    0 8px 22px color-mix(in srgb, var(--color-cta) 42%, transparent);
 }
 
 @keyframes style-card-enter {

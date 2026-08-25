@@ -51,7 +51,7 @@ export default function StyleCard({
         aria-pressed={selected}
         aria-label={selected ? `取消選擇${style.name}` : `選擇${style.name}`}
       >
-        <svg viewBox="0 0 24 24" fill="none" width="18" height="18">
+        <svg viewBox="0 0 24 24" fill="none" width="24" height="24">
           <path
             d="M5 12.5L10 17.5L19 7.5"
             stroke="currentColor"
