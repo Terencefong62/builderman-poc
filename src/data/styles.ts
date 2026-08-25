@@ -18,7 +18,7 @@ export const RENOVATION_STYLES: RenovationStyle[] = [
     id: 'modern-minimal',
     name: '現代簡約風',
     tagline: '留白、乾淨線條',
-    image: styleImage('modern-minimal.jpg'),
+    image: styleImage('modern-minimal-v2.png'),
     galleryImage: styleGallery('modern-minimal.png'),
     layout: 'feature',
   },
