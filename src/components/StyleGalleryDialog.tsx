@@ -96,7 +96,7 @@ export default function StyleGalleryDialog({
               className={unitSize === 'small' ? 'is-active' : ''}
               onClick={() => selectUnitSize('small')}
             >
-              <strong>小單位</strong>
+              <strong>細單位</strong>
             </button>
             <button
               type="button"
@@ -122,7 +122,7 @@ export default function StyleGalleryDialog({
               className="style-gallery__spaces"
               ref={carouselRef}
               onScroll={handleCarouselScroll}
-              aria-label={`${unitSize === 'small' ? '小單位' : '大單位'}空間設計，可左右滑動`}
+              aria-label={`${unitSize === 'small' ? '細單位' : '大單位'}空間設計，可左右滑動`}
             >
               {SPACE_IDEAS.map((space, index) => (
                 <figure className="style-gallery__space" key={space.name}>
