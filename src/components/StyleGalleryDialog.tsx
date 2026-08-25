@@ -49,14 +49,14 @@ export default function StyleGalleryDialog({
   const scrollRooms = (direction: -1 | 1) => {
     const carousel = carouselRef.current
     if (!carousel) return
-    carousel.scrollBy({ left: carousel.clientWidth * 0.86 * direction, behavior: 'smooth' })
+    carousel.scrollBy({ left: carousel.clientWidth * direction, behavior: 'smooth' })
   }
 
   const handleCarouselScroll = () => {
     const carousel = carouselRef.current
     const firstCard = carousel?.firstElementChild as HTMLElement | null
     if (!carousel || !firstCard) return
-    const gap = 16
+    const gap = 0
     setActiveRoom(Math.max(0, Math.min(3, Math.round(carousel.scrollLeft / (firstCard.offsetWidth + gap)))))
   }
 
