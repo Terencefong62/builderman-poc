@@ -11,9 +11,13 @@ import { MATCH_STEPS } from '../data/styles'
 import { loadMatchDraft, saveMatchDraft } from '../lib/matchDraft'
 import './ContactPage.css'
 
-type FieldErrors = Partial<Record<keyof ContactInfo, string>>
+type FieldErrors = Partial<Record<keyof ContactInfo | 'password', string>>
 
-function validateContact(contact: ContactInfo, touched: boolean): FieldErrors {
+function validateContact(
+  contact: ContactInfo,
+  password: string,
+  touched: boolean,
+): FieldErrors {
   if (!touched) return {}
 
   const errors: FieldErrors = {}
@@ -24,6 +28,10 @@ function validateContact(contact: ContactInfo, touched: boolean): FieldErrors {
 
   if (!isValidEmail(contact.email)) {
     errors.email = '請輸入有效電郵地址'
+  }
+
+  if (password.length < 8) {
+    errors.password = '密碼最少需要 8 個字元'
   }
 
   if (!isValidPhone(contact.phone)) {
@@ -39,13 +47,14 @@ export default function ContactPage() {
     () => loadMatchDraft().contact,
   )
   const [touched, setTouched] = useState(false)
+  const [password, setPassword] = useState('')
 
   const errors = useMemo(
-    () => validateContact(contact, touched),
-    [contact, touched],
+    () => validateContact(contact, password, touched),
+    [contact, password, touched],
   )
 
-  const canContinue = isContactComplete(contact)
+  const canContinue = isContactComplete(contact) && password.length >= 8
 
   const summary = useMemo(() => {
     if (!canContinue) return '尚未完成個人檔案'
@@ -63,7 +72,7 @@ export default function ContactPage() {
 
   function handleContinue() {
     setTouched(true)
-    if (!isContactComplete(contact)) return
+    if (!canContinue) return
     saveMatchDraft({ contact })
     navigate('/match/matching')
   }
@@ -86,15 +95,15 @@ export default function ContactPage() {
 
           <ul className="contact-benefits" aria-label="完成個人檔案的好處">
             <li>
-              <span className="contact-benefits__number" aria-hidden="true">01</span>
+              <span className="contact-benefits__check" aria-hidden="true">✓</span>
               <span>方便平台同裝修公司聯絡你</span>
             </li>
             <li>
-              <span className="contact-benefits__number" aria-hidden="true">02</span>
+              <span className="contact-benefits__check" aria-hidden="true">✓</span>
               <span>儲存你已填寫嘅資料，下次登入就可以繼續，唔使重新填過</span>
             </li>
             <li>
-              <span className="contact-benefits__number" aria-hidden="true">03</span>
+              <span className="contact-benefits__check" aria-hidden="true">✓</span>
               <span>幫你儲存及管理報價同繳費紀錄</span>
             </li>
           </ul>
@@ -142,7 +151,7 @@ export default function ContactPage() {
 
               <label className="field">
                 <span className="field__label">
-                  電郵 <span className="field__required">*</span>
+                  電郵（登入名稱） <span className="field__required">*</span>
                 </span>
                 <input
                   className={`field__input field__input--en${errors.email ? ' is-error' : ''}`}
@@ -155,11 +164,43 @@ export default function ContactPage() {
                   onChange={(event) => patch({ email: event.target.value })}
                   onBlur={() => setTouched(true)}
                   aria-invalid={Boolean(errors.email)}
-                  aria-describedby={errors.email ? 'email-error' : undefined}
+                  aria-describedby={errors.email ? 'email-error' : 'email-login-hint'}
                 />
+                {!errors.email && (
+                  <span id="email-login-hint" className="field__hint">
+                    日後使用此電郵登入帳戶
+                  </span>
+                )}
                 {errors.email && (
                   <span id="email-error" className="field__error">
                     {errors.email}
+                  </span>
+                )}
+              </label>
+
+              <label className="field">
+                <span className="field__label">
+                  帳戶自訂密碼 <span className="field__required">*</span>
+                </span>
+                <input
+                  className={`field__input field__input--en${errors.password ? ' is-error' : ''}`}
+                  type="password"
+                  name="new-password"
+                  autoComplete="new-password"
+                  placeholder="最少 8 個字元"
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  onBlur={() => setTouched(true)}
+                  aria-invalid={Boolean(errors.password)}
+                  aria-describedby={errors.password ? 'password-error' : 'password-hint'}
+                />
+                {errors.password ? (
+                  <span id="password-error" className="field__error">
+                    {errors.password}
+                  </span>
+                ) : (
+                  <span id="password-hint" className="field__hint">
+                    請使用至少 8 個字元
                   </span>
                 )}
               </label>
